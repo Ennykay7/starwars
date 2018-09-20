@@ -15,15 +15,43 @@
 <body>
 
   <div class="container">
-    <div class="jumbotron">
-      <h1>Star Wars Express</h1>
-      <h3>The greatest resource in the galaxy for Star Wars statistics!</h3>
-      <hr>
-      <a href="/add"><button class="btn btn-danger btn-lg"><span class="fa fa-plus"></span> Add New Character</button></a>
-    </div>
-    <div class="row">
 
+    <div class="jumbotron">
+      <h1>Hot Restraunt</h1>
+      <h3>We only have 5 tables! Book your seat before they all are gone!</h3>
+      <hr>
+      <a href="/view"><button class="btn btn-primary btn-lg"><span class="fa fa-plus"></span> View Tables</button></a>
+      <a href="/add"><button class="btn btn-danger btn-lg"><span class="fa fa-plus"></span> Make Reservation</button></a>
+    </div>
+
+    <div class="row">
       <div class="col-12">
+
+        <div class="card mb-4">
+          <div class="card-header">
+            <h3><strong>Current Reservations</strong></h3>
+          </div>
+          <div id="currentRes">
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="card mb-4">
+        <div class="card-header">
+          <h3><strong>Wait List</strong></h3>
+        </div>
+        <div id="waitRes">
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- <div class="col-12">
 
         <div class="card mb-4">
           <div class="card-header">
@@ -52,20 +80,20 @@
               <h3><strong>Force Points:</strong> <span id="force-points">2000</span></h3>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </div> 
+      </div> -->
+  </div>
   </div>
 
   <script type="text/javascript">
-    $("#search-btn").on("click", function() {
+    $("#search-btn").on("click", function () {
       var searchedCharacter = $("#character-search").val().trim();
 
       // Using a RegEx Pattern to remove spaces from searchedCharacter
       // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
       searchedCharacter = searchedCharacter.replace(/\s+/g, "").toLowerCase();
 
-      $.get("/api/characters/" + searchedCharacter, function(data) {
+      $.get("/api/characters/" + searchedCharacter, function (data) {
         console.log(data);
         if (data) {
           $("#stats").show();
